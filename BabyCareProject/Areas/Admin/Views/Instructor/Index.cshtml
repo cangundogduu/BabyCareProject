@@ -1,0 +1,34 @@
+﻿@model List<ResultInstractorDto>
+@{
+    ViewData["Title"] = "Index";
+    int count = 0;
+}
+
+<h3>Eğitmenler </h3>
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Profil Resmi</th>
+        <th>Ad Soyad</th>
+        <th>Ünvan</th>
+        <th>İşlemler</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td><img src="@item.ImageUrl" style="height:75px;width:50px;" /></td>
+            <td>@item.FullName</td>
+            <td>@item.Title</td>
+            <td>
+
+                <a href="/Admin/Instructor/DeleteInstructor/@item.InstructorId" class="btn btn-danger">Sil</a>
+                <a href="/Admin/Instructor/UpdateInstructor/@item.InstructorId" class="btn btn-warning">Güncelle</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<a href="/Admin/Instructor/CreateInstructor/" class="btn btn-danger">Yeni Eğitmen</a>
